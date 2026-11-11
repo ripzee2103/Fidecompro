@@ -26,7 +26,7 @@ public class Server {
         try(Socket s=socket;ObjectOutputStream out=new ObjectOutputStream(s.getOutputStream());ObjectInputStream in=new ObjectInputStream(s.getInputStream())){
             s.setSoTimeout(15000);
             Object obj=in.readObject();
-            Response response=obj instanceof Request?handle((Request)obj):fail("Solicitud inválida");
+            Response response=obj instanceof Request?handle((Request)obj):fail("Solicitud inválid");
             out.writeObject(response);out.flush();
         }catch(Exception e){System.err.println("Conexión: "+e.getMessage());}
     }
